@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="https://vancycici.github.io/fbdecode/img/ms.jpg">
 </head>
 <body>
-<script type="text/javascript" async="" src="./ADVERSARIAL SPEECH FOR VOICE PRIVACY PROTECTION AGAINST PERSONALIZED SPEECH GENERATION_files/analytics.js.download"></script><script async="" src="./ADVERSARIAL SPEECH FOR VOICE PRIVACY PROTECTION AGAINST PERSONALIZED SPEECH GENERATION_files/js"></script>
+<!-- <script type="text/javascript" async="" src="./ADVERSARIAL SPEECH FOR VOICE PRIVACY PROTECTION AGAINST PERSONALIZED SPEECH GENERATION_files/analytics.js.download"></script><script async="" src="./ADVERSARIAL SPEECH FOR VOICE PRIVACY PROTECTION AGAINST PERSONALIZED SPEECH GENERATION_files/js"></script> -->
 <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -37,212 +37,65 @@
 
 
 音声の説明<div>
-    <h3>1089</h3>
+    <h3>Speaker_ID: 4</h3>
     
 	<table><tbody><tr>
 		<td>Reference Speech:</td>
 		<td>
 			<audio controls="">
-				<source src="wav\1089-134691-0002rec.wav">
+				<source src="src/baseline/alpha_0.001/epoch_1000/4_to_146/original_audio_100_59cbeb56844398056bb1.wav">
 			</audio>
 		</td>
 		<td></td>
-		<td>IFGSM:</td>
+		<td>IFGSM(α=0.001, epoch=1000):</td>
 		<td>
 			<audio controls="">
-				<source src="wav/1089-134691-0002adv.wav">
+				<source src="src/baseline/alpha_0.001/epoch_1000/4_to_146/Noise Added_audio_1000_caa052705c1c082e5ba6.wav">
 			</audio>
 		</td>
 		<td></td>
-		<td>TTS:</td>
+		<td>IFGSM(α=0.01, epoch=400):</td>
 		<td>
 			<audio controls="">
-				<source src="wav/1089-134691-0002tts.wav">
+				<source src="src/baseline/alpha_0.01/epoch_400/4_to_146/Noise Added_audio_400_8d7c3d7ea939d3d10f0b.wav">
 			</audio>
 		</td>
 		<td></td>
-		<td>TTS*:</td>
+		<td>Proposed-sign(α=0.001, epoch=1000):</td>
 		<td>
 			<audio controls="">
-				<source src="wav/1089-134691-0002advtts.wav">
+				<source src="src/baseline2/exp/Sign_alpha_0.001/epoch_1000/4_to_146/Noise Added_audio_1000_bca2c386421078f62997.wav">
 			</audio>
 		</td>
 		<td></td>
-		<td>VC Source:</td>
+		<td>Proposed-cos(lr=0.01, epoch=400):</td>
 		<td>
 			<audio controls="">
-				<source src="wav/1089-134691-0002source.wav">
+				<source src="src/baseline3/exp/Adam_lr_0.01/epoch_400/4_to_146/Noise Added_audio_400_4b4f8b64be97ac590363.wav">
 			</audio>
 		</td>
-		<td>VC:</td>
+		<td>Proposed-cos(lr=0.1, epoch=1000)</td>
 		<td>
 			<audio controls="">
-				<source src="wav/1089-134691-0002vc.wav">
+				<source src="src/baseline3/exp2/Adam_lr_0.1/epoch_1000/4_to_146/Noise Added_audio_1000_83c412acf67ccbe0f995.wav">
 			</audio>
 		</td>
-		<td>VC*:</td>
+		<td>Proposed-anc(lr=0.01, epoch=400):</td>
 		<td>
 			<audio controls="">
-				<source src="wav/1089-134691-0002advvc.wav">
+				<source src="src/proposed/exp/Adam_lr_0.01/epoch_400/4_to_146/Noise Added_audio_400_d45d640ad72b788038c7.wav">
 			</audio>
 		</td>
-	</tr>
-</tbody></table>
-    <h3>1188</h3>
-    
-	<table><tbody><tr>
-		<td>Reference Speech:</td>
+		<td>Proposed-anc(lr=0.1, epoch=1000):</td>
 		<td>
 			<audio controls="">
-				<source src="wav\1188-133604-0005rec.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>IFGSM:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/1188-133604-0005adv.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>TTS:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/1188-133604-0005tts.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>TTS*:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/1188-133604-0005advtts.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>VC Source:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/1188-133604-0005source.wav">
-			</audio>
-		</td>
-		<td>VC:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/1188-133604-0005vc.wav">
-			</audio>
-		</td>
-		<td>VC*:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/1188-133604-0005advvc.wav">
+				<source src="src/proposed/exp2/Adam_lr_0.1/epoch_1000/4_to_146/Noise Added_audio_1000_943f1eea3a9d7fc9cf1d.wav">
 			</audio>
 		</td>
 	</tr>
 </tbody></table>
 
-    <h3>121</h3>
-    
-	<table><tbody><tr>
-		<td>Reference Speech:</td>
-		<td>
-			<audio controls="">
-				<source src="wav\121-127105-0002rec.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>IFGSM:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/121-127105-0002adv.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>TTS:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/121-127105-0002tts.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>TTS*:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/121-127105-0002advtts.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>VC Source:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/121-127105-0002source.wav">
-			</audio>
-		</td><td>
-		</td><td>VC:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/121-127105-0002vc.wav">
-			</audio>
-		</td>
-		<td>VC*:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/121-127105-0002advvc.wav">
-			</audio>
-		</td>
-	</tr>
-</tbody></table>
 
-    <h3>8463</h3>
-    
-	<table><tbody><tr>
-		<td>Reference Speech:</td>
-		<td>
-			<audio controls="">
-				<source src="wav\8463-287645-0003rec.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>IFGSM:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/8463-287645-0003adv.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>TTS:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/8463-287645-0003tts.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>TTS*:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/8463-287645-0003advtts.wav">
-			</audio>
-		</td>
-		<td></td>
-		<td>VC Source:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/8463-287645-0003source.wav">
-			</audio>
-		</td><td>
-		</td><td>VC:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/8463-287645-0003vc.wav">
-			</audio>
-		</td>
-		<td>VC*:</td>
-		<td>
-			<audio controls="">
-				<source src="wav/8463-287645-0003advvc.wav">
-			</audio>
-		</td>
-	</tr>
-</tbody></table>
 </div>
 
-<iframe id="qne6M8KE" frameborder="0" src="./ADVERSARIAL SPEECH FOR VOICE PRIVACY PROTECTION AGAINST PERSONALIZED SPEECH GENERATION_files/translateSandbox.html" style="width: 0px; height: 0px; display: none;"></iframe></body></html>
+<!-- <iframe id="qne6M8KE" frameborder="0" src="./ADVERSARIAL SPEECH FOR VOICE PRIVACY PROTECTION AGAINST PERSONALIZED SPEECH GENERATION_files/translateSandbox.html" style="width: 0px; height: 0px; display: none;"></iframe></body></html> -->
