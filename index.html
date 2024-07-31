@@ -2,8 +2,7 @@
 <!-- saved from url=(0064)https://voiceprivacy.github.io/Adeversarial-Speech-with-YourTTS/ -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>ADVERSARIAL SPEECH FOR VOICE PRIVACY PROTECTION AGAINST PERSONALIZED
-SPEECH GENERATION
+    <title> アンカー話者を用いたデータポイズニング
 </title>
     <link rel="shortcut icon" href="https://vancycici.github.io/fbdecode/img/ms.jpg">
     <link rel="icon" href="https://vancycici.github.io/fbdecode/img/ms.jpg">
@@ -24,13 +23,12 @@ SPEECH GENERATION
 
 <article>
     <header>
-        <h1>ADVERSARIAL SPEECH FOR VOICE PRIVACY PROTECTION AGAINST PERSONALIZED
-SPEECH GENERATION</h1>
+        <h1>アンカー話者を用いたデータポイズニング</h1>
     </header>
 </article> 
-<div><b>Authors:</b> ShiHao Chen, Liping Chen, Jie Zhang, KongAik Lee, Zhen-Hua Ling, Li-Rong Dai </div>
+<div><b>Authors:</b> Yuuki Katsumata </div>
  
-<div><b>Abstract:</b> The rapid progress in personalized speech generation technology, including personalized text-to-speech (TTS) and voice conversion (VC), poses a challenge in distinguishing between generated and real speech for human listeners, resulting in an urgent demand in protecting speakers' voices from malicious misuse. In this regard, we propose a speaker protection method based on adversarial attacks. The proposed method perturbs speech signals by minimally altering the original speech while rendering downstream speech generation models unable to accurately generate the voice of the target speaker. For validation, we employ the open-source pre-trained YourTTS model for speech generation and protect the target speaker's speech in the white-box scenario. Automatic speaker verification (ASV) evaluations were carried out on the generated speech as the assessment of the voice protection capability. Our experimental results show that we successfully perturbed the speaker encoder of the YourTTS model using the gradient-based I-FGSM adversarial perturbation method. Furthermore, the adversarial perturbation is effective in preventing the YourTTS model from generating the speech of the target speaker.
+<div><b>Abstract:</b> abstract記載
 </div> 
 
 <br>
@@ -38,7 +36,7 @@ SPEECH GENERATION</h1>
 <br>
 
 
-Here, we showcase the adversarial samples generated using the I-FGSM method to attack the YourTTS model, along with the speech generated from both adversarial samples and reference speech. We randomly selected one sentence each from 2 males and 2 females and synthesized them using the Coqui TTS tool. In this context, 'Reference Speech' is defined as the original speech that is used as reference speech in YourTTS, 'IFGSM' as the speech with adversarial samples added, 'TTS' as the speech synthesized using Reference Speech for TTS, 'VC Source' as the source speech for VC, 'VC' as the speech synthesized using Reference Speech for VC, 'TTS*' as the speech synthesized using adversarial samples for TTS, and 'VC*' as the speech synthesized using adversarial samples for VC.<div>
+音声の説明<div>
     <h3>1089</h3>
     
 	<table><tbody><tr>
