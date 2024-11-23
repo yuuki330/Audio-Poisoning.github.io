@@ -130,9 +130,8 @@
                 const CosValue = parseFloat(parts2[parts2.length - 1].split('.wav')[0]);
 
                 if (experimentName === 'exp5') {
-                    console.log(parts)
-                    console.log(parts[2])
-                    const sampleName = parts[3].split(speakerId+'_')[1].split('.wav')[0]; // サンプル名を取得 (例: "sample1")
+                    const speakerId = parts[3];
+                    const sampleName = parts[4].split(speakerId+'_')[1].split('.wav')[0]; // サンプル名を取得 (例: "sample1")
                     if (!experimentData[experimentName].method[speakerId]) {
                         experimentData[experimentName].method[speakerId] = [];
                     }
