@@ -117,12 +117,7 @@
                 const experimentName = parts[1]; // ディレクトリ名で実験を判定
                 const speakerId = parts[2]; // "17" などを取得
                 const parts2 = parts[parts.length-1].split('_');
-                const CosValue = parts2[parts2.length-1].split('.wav')[0];
-
-                // console.log(parts)
-                // console.log(experimentName)
-                // console.log(speakerId)
-                // console.log(CosValue)
+                const CosValue = parseFloat(parts2[parts2.length-1].split('.wav')[0]);
 
                 if (experimentData[experimentName]) {
                     if (!experimentData[experimentName].speakers[speakerId]) {
@@ -135,6 +130,8 @@
                         CosValue
                     });
                 }
+                console.log("Filtering data with Cos:", Cos);
+                console.log("Speaker Data:", experiment.speakers);
             });
 
             // 実験セクションを生成
@@ -185,7 +182,6 @@
                     tableBody.innerHTML = "";
 
                     Object.keys(experiment.speakers).forEach(speakerId => {
-                        console.log(data)
                         experiment.speakers[speakerId]
                             .filter(data => data.CosValue === Cos.toString())
                             .forEach(data => {
