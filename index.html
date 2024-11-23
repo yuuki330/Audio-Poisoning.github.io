@@ -119,6 +119,9 @@
                 const parts2 = parts[parts.length-1].split('_');
                 const CosValue = parseFloat(parts2[parts2.length-1].split('.wav')[0]);
 
+                console.log("experimentName:", experimentName);
+                console.log("speakerId:", speakerId);
+
                 if (experimentData[experimentName]) {
                     if (!experimentData[experimentName].speakers[speakerId]) {
                         experimentData[experimentName].speakers[speakerId] = [];
