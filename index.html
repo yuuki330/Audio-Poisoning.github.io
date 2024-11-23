@@ -5,45 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>アンカー話者を用いたデータポイズニング</title>
     <style>
+        /* ページ全体をフレックスレイアウトで構築 */
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
             padding: 0;
             background-color: #f9f9f9;
             color: #333;
-            min-height: 1000vh; /* ページ全体の高さを確保 */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* ページ全体の高さを確保 */
         }
+    
         header, .authors, .abstract {
             margin-bottom: 20px;
         }
+    
         .authors, .abstract {
             font-size: 18px;
         }
+    
+        main {
+            flex: 1; /* メインコンテンツを余白として拡張 */
+        }
+    
         footer {
-            text-align: center; /* 中央揃え */
+            text-align: center;
             padding: 10px;
             background-color: #f4f4f4; /* 背景色を設定 */
-            position: relative; /* 固定せず通常の位置に配置 */
         }
+    
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
+    
         th, td {
             padding: 8px 12px;
             text-align: left;
             border: 1px solid #ddd;
         }
+    
         th {
             background-color: #f4f4f4;
         }
+    
         .slider-container {
             margin: 20px 0;
         }
+    
         .slider {
             width: 100%;
         }
+    
         .slider-value {
             text-align: center;
             font-size: 16px;
