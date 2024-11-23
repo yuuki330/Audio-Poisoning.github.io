@@ -1,0 +1,349 @@
+{
+    "parameters": {
+        "src_path": "/workspace/LibriTTS/train-clean2/298/126790/298_126790_000005_000000.wav",
+        "anc_dir": "/workspace/LibriTTS/train-clean2/724",
+        "output_dir": "/workspace/experiment/results/exp4/298to724/",
+        "training_method": "Proposed",
+        "utmos_org": 3.6167407035827637,
+        "thresholds": [
+            1.0,
+            0.95,
+            0.9,
+            0.8500000000000001,
+            0.8,
+            0.75,
+            0.7,
+            0.65,
+            0.6,
+            0.55,
+            0.5,
+            0.45,
+            0.4,
+            0.35,
+            0.3,
+            0.25,
+            0.19999999999999996,
+            0.14999999999999997,
+            0.09999999999999998,
+            0.04999999999999999,
+            0.0,
+            -0.050000000000000044,
+            -0.10000000000000009,
+            -0.15000000000000002,
+            -0.20000000000000007,
+            -0.25,
+            -0.30000000000000004,
+            -0.3500000000000001,
+            -0.4,
+            -0.45000000000000007
+        ]
+    },
+    "scores": [
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_1.0.wav",
+            "utmos_score": 3.6167407035827637,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.3995318114757538,
+            "cos_src_noise": 1.0,
+            "epochs": 0,
+            "threshold": 1.0
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.95.wav",
+            "utmos_score": 3.6034958362579346,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.4968602657318115,
+            "cos_src_noise": 0.9493957757949829,
+            "epochs": 99,
+            "threshold": 0.95
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.9.wav",
+            "utmos_score": 3.577411413192749,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.5595892667770386,
+            "cos_src_noise": 0.8998794555664062,
+            "epochs": 215,
+            "threshold": 0.9
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.8500000000000001.wav",
+            "utmos_score": 3.5594441890716553,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.6388517022132874,
+            "cos_src_noise": 0.8499611616134644,
+            "epochs": 449,
+            "threshold": 0.8500000000000001
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.8.wav",
+            "utmos_score": 3.557506561279297,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.698509693145752,
+            "cos_src_noise": 0.799994707107544,
+            "epochs": 719,
+            "threshold": 0.8
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.75.wav",
+            "utmos_score": 3.546447277069092,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.747344970703125,
+            "cos_src_noise": 0.7498992681503296,
+            "epochs": 1077,
+            "threshold": 0.75
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.7.wav",
+            "utmos_score": 3.5215723514556885,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.8064025640487671,
+            "cos_src_noise": 0.6999613046646118,
+            "epochs": 1741,
+            "threshold": 0.7
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.65.wav",
+            "utmos_score": 3.4973056316375732,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.8511040806770325,
+            "cos_src_noise": 0.649986982345581,
+            "epochs": 2450,
+            "threshold": 0.65
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.6.wav",
+            "utmos_score": 3.45473051071167,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.8916869759559631,
+            "cos_src_noise": 0.5999884605407715,
+            "epochs": 3496,
+            "threshold": 0.6
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.55.wav",
+            "utmos_score": 3.414869785308838,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9304800033569336,
+            "cos_src_noise": 0.5499876737594604,
+            "epochs": 5163,
+            "threshold": 0.55
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.5.wav",
+            "utmos_score": 3.317408561706543,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9650875329971313,
+            "cos_src_noise": 0.49996209144592285,
+            "epochs": 7695,
+            "threshold": 0.5
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.45.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.45
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.4.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.4
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.35.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.35
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.3.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.3
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.25.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.25
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.19999999999999996.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.19999999999999996
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.14999999999999997.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.14999999999999997
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.09999999999999998.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.09999999999999998
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.04999999999999999.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.04999999999999999
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_0.0.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": 0.0
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_-0.050000000000000044.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": -0.050000000000000044
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_-0.10000000000000009.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": -0.10000000000000009
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_-0.15000000000000002.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": -0.15000000000000002
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_-0.20000000000000007.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": -0.20000000000000007
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_-0.25.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": -0.25
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_-0.30000000000000004.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": -0.30000000000000004
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_-0.3500000000000001.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": -0.3500000000000001
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_-0.4.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": -0.4
+        },
+        {
+            "anc_path": "/workspace/LibriTTS/train-clean2/724/123285/724_123285_000048_000001.wav",
+            "output_path": "/workspace/experiment/results/exp4/298to724/result_298_126790_000005_000000_724_123285_000048_000001_-0.45000000000000007.wav",
+            "utmos_score": 3.170661687850952,
+            "cos_src_anc": 0.3995324373245239,
+            "cos_anc_noise": 0.9832739233970642,
+            "cos_src_noise": 0.46615803241729736,
+            "epochs": 10000,
+            "threshold": -0.45000000000000007
+        }
+    ],
+    "plots": {
+        "threshold_vs_cos_src_noise": "/workspace/experiment/results/exp4/298to724/Threshold_vs_cos_src_noise.png",
+        "threshold_vs_cos_anc_noise": "/workspace/experiment/results/exp4/298to724/Threshold_vs_cos_anc_noise.png",
+        "threshold_vs_utmos": "/workspace/experiment/results/exp4/298to724/threshold_vs_utmos.png",
+        "threshold_vs_epochs": "/workspace/experiment/results/exp4/298to724/threshold_vs_num_epochs.png"
+    }
+}
