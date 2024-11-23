@@ -118,10 +118,11 @@
                 const speakerId = parts[2]; // "17" などを取得
                 console.log(parts)
                 console.log(parts.length)
-                console.log(parts[parts.length - 1])
-                console.log(parts[-1].split('_'))
+                console.log(parts[parts.length-1])
+                console.log(parts[parts.length-1].split('_'))
+                const parts2 = parts[parts.length-1].split('_')
                 
-                const CosValue = parts[3].split('_')[6]?.split('.')[0]; // 6つ目の "_" 以降を取得
+                const CosValue = parts2[parts2.length-1]?.split('.')[0]; // 6つ目の "_" 以降を取得
 
                 // console.log(parts)
                 // console.log(experimentName)
