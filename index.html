@@ -127,7 +127,7 @@
                 const CosValue = parseFloat(parts[parts.length - 1].split('_').pop().split('.wav')[0]);
 
                 if (experimentName === 'exp5') {
-                    const sampleName = parts[4].split('_')[1];
+                    const sampleName = parts[4].split('.wav')[0];
                     console.log(parts)
                     if (!experimentData[experimentName].samples[sampleName]) {
                         experimentData[experimentName].samples[sampleName] = [];
