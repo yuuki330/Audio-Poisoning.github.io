@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,43 +12,29 @@
             background-color: #f9f9f9;
             color: #333;
         }
-
-        header h1 {
-            text-align: center;
-            color: #0078d7;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-
         th, td {
             padding: 8px 12px;
             text-align: left;
             border: 1px solid #ddd;
         }
-
-        td audio {
-            display: block;
-            margin: 5px 0;
+        th {
+            background-color: #f4f4f4;
         }
-
-        h3 {
-            margin-top: 30px;
-            color: #333;
+        .slider-container {
+            margin: 20px 0;
         }
-
-        .authors, .abstract {
-            margin-bottom: 20px;
+        .slider {
+            width: 100%;
         }
-
-        footer {
+        .slider-value {
             text-align: center;
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #777;
+            font-size: 16px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -56,103 +42,75 @@
     <header>
         <h1>アンカー話者を用いたデータポイズニング</h1>
     </header>
-
-    <section class="authors">
-        <b>Authors:</b> Yuuki Katsumata
+    <section class="slider-container">
+        <h3>調整用スライダー</h3>
+        <input id="epochSlider" class="slider" type="range" min="100" max="1000" step="100" value="500">
+        <div id="sliderValue" class="slider-value">現在のエポック: 500</div>
     </section>
 
-    <section class="abstract">
-        <b>Abstract:</b> abstract記載
-    </section>
+    <table>
+        <thead>
+            <tr>
+                <th>Speaker</th>
+                <th>Type</th>
+                <th>Audio</th>
+            </tr>
+        </thead>
+        <tbody id="audioTable">
+            <!-- 動的にデータを挿入 -->
+        </tbody>
+    </table>
 
-    <section class="audio-results">
-        <h3>Speaker_ID: 4</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Type</th>
-                    <th>Audio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Reference Speech</td>
-                    <td>
-                        <audio controls>
-                            <source src="src/baseline/alpha_0.001/epoch_1000/4_to_146/original_audio_100_59cbeb56844398056bb1.wav" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
-                </tr>
-                <tr>
-                    <td>IFGSM (α=0.001, epoch=1000)</td>
-                    <td>
-                        <audio controls>
-                            <source src="src/baseline/alpha_0.001/epoch_1000/4_to_146/Noise Added_audio_1000_caa052705c1c082e5ba6.wav" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
-                </tr>
-                <tr>
-                    <td>IFGSM (α=0.01, epoch=400)</td>
-                    <td>
-                        <audio controls>
-                            <source src="src/baseline/alpha_0.01/epoch_400/4_to_146/Noise Added_audio_400_8d7c3d7ea939d3d10f0b.wav" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Proposed-sign (α=0.001, epoch=1000)</td>
-                    <td>
-                        <audio controls>
-                            <source src="src/baseline2/exp/Sign_alpha_0.001/epoch_1000/4_to_146/Noise Added_audio_1000_e04b1d7f40c426ee3846.wav" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Proposed-cos (lr=0.01, epoch=400)</td>
-                    <td>
-                        <audio controls>
-                            <source src="src/baseline3/exp/Adam_lr_0.01/epoch_400/4_to_146/Noise Added_audio_400_4b4f8b64be97ac590363.wav" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Proposed-cos (lr=0.1, epoch=1000)</td>
-                    <td>
-                        <audio controls>
-                            <source src="src/baseline3/exp2/Adam_lr_0.1/epoch_1000/4_to_146/Noise Added_audio_1000_83c412acf67ccbe0f995.wav" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Proposed-anc (lr=0.01, epoch=400)</td>
-                    <td>
-                        <audio controls>
-                            <source src="src/proposed/exp/Adam_lr_0.01/epoch_400/4_to_146/Noise Added_audio_400_d45d640ad72b788038c7.wav" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Proposed-anc (lr=0.1, epoch=1000)</td>
-                    <td>
-                        <audio controls>
-                            <source src="src/proposed/exp2/Adam_lr_0.1/epoch_1000/4_to_146/Noise Added_audio_1000_943f1eea3a9d7fc9cf1d.wav" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <script>
+        const slider = document.getElementById('epochSlider');
+        const sliderValue = document.getElementById('sliderValue');
+        const audioTable = document.getElementById('audioTable');
 
-    <footer>
-        <p>© 2024 Yuuki Katsumata. Powered by GitHub Pages.</p>
-    </footer>
+        // 音声データの定義 (スライダーの値に応じて表示を変更)
+        const audioData = {
+            100: [
+                { speaker: "4", type: "Reference Speech", src: "src/epoch_100/speaker_4_ref.wav" },
+                { speaker: "4", type: "Noise Added (α=0.001)", src: "src/epoch_100/speaker_4_noise_0.001.wav" }
+            ],
+            500: [
+                { speaker: "4", type: "Reference Speech", src: "src/epoch_500/speaker_4_ref.wav" },
+                { speaker: "4", type: "Noise Added (α=0.001)", src: "src/epoch_500/speaker_4_noise_0.001.wav" }
+            ],
+            1000: [
+                { speaker: "4", type: "Reference Speech", src: "src/epoch_1000/speaker_4_ref.wav" },
+                { speaker: "4", type: "Noise Added (α=0.001)", src: "src/epoch_1000/speaker_4_noise_0.001.wav" }
+            ]
+        };
+
+        // スライダー変更時に呼び出される関数
+        function updateAudioTable(epoch) {
+            sliderValue.textContent = `現在のエポック: ${epoch}`;
+            audioTable.innerHTML = ""; // テーブルをクリア
+
+            // 現在のエポックの音声データを追加
+            audioData[epoch].forEach(data => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${data.speaker}</td>
+                    <td>${data.type}</td>
+                    <td>
+                        <audio controls>
+                            <source src="${data.src}" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+                `;
+                audioTable.appendChild(row);
+            });
+        }
+
+        // 初期表示
+        updateAudioTable(slider.value);
+
+        // スライダー値が変更されたらテーブルを更新
+        slider.addEventListener('input', () => {
+            updateAudioTable(slider.value);
+        });
+    </script>
 </body>
 </html>
