@@ -1,0 +1,7 @@
+[
+    "results/exp3/17/result_17_362_000000_000000_-0.05.wav",
+    "results/exp3/17/gen/gen_result_17_362_000000_000000_-0.05.wav",
+    "src/experiment2/epoch_100/speaker_17_ref.wav",
+    "src/experiment2/epoch_100/speaker_17_noise_0.001.wav",
+    "src/experiment2/epoch_500/speaker_17_noise_0.01.wav"
+]
