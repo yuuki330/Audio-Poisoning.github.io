@@ -80,7 +80,7 @@
     </section>
 
     <div id="experiments">
-        <!-- 動的に実験セクションを挿入 -->
+        <!-- 実験セクションを動的に追加 -->
     </div>
 
     <footer>
@@ -90,113 +90,124 @@
     <script>
         const experimentsDiv = document.getElementById('experiments');
 
-        // 実験データの定義
-        const experimentData = {
-            experiment1: {
-                title: "実験 1: 基準音声",
-                speakers: {
-                    "4": [
-                        { type: "Reference Speech", src: "src/experiment1/epoch_100/speaker_4_ref.wav" },
-                        { type: "Noise Added (α=0.001)", src: "src/experiment1/epoch_100/speaker_4_noise_0.001.wav" },
-                        { type: "Noise Added (α=0.01)", src: "src/experiment1/epoch_500/speaker_4_noise_0.01.wav" }
-                    ]
+        // JSON ファイルからファイルリストを取得
+        async function fetchFileList() {
+            const response = await fetch('data/filelist.json');
+            return await response.json();
+        }
+
+        // 実験データを生成
+        async function generateExperiments() {
+            const files = await fetchFileList();
+
+            // ファイルリストを元に実験データを構築
+            const experimentData = {
+                experiment1: {
+                    title: "Exp.3: I-FGSM評価",
+                    speakers: {}
                 },
-                slider: { min: 100, max: 500, step: 100, default: 100 }
-            },
-            experiment2: {
-                title: "実験 2: 提案手法",
-                speakers: {
-                    "17": [
-                        { type: "Reference Speech", src: "src/experiment2/epoch_100/speaker_17_ref.wav" },
-                        { type: "Noise Added (α=0.001)", src: "src/experiment2/epoch_100/speaker_17_noise_0.001.wav" },
-                        { type: "Noise Added (α=0.01)", src: "src/experiment2/epoch_500/speaker_17_noise_0.01.wav" }
-                    ]
-                },
-                slider: { min: 100, max: 500, step: 100, default: 100 }
-            }
-        };
+                experiment2: {
+                    title: "実験 2: 提案手法",
+                    speakers: {}
+                }
+            };
 
-        // 実験セクションの作成
-        Object.keys(experimentData).forEach(expKey => {
-            const experiment = experimentData[expKey];
+            files.forEach(file => {
+                const parts = file.split('/');
+                const experimentName = parts[1]; // ディレクトリ名で実験を判定
+                const speakerId = parts[2].split('_')[1]; // "17" などを取得
+                const CosValue = file.split('_')[3]?.split('.')[0]; // 3つ目の "_" 以降を取得
 
-            // セクションを作成
-            const section = document.createElement('section');
-            const title = document.createElement('h2');
-            title.textContent = experiment.title;
-            section.appendChild(title);
+                if (experimentData[experimentName]) {
+                    if (!experimentData[experimentName].speakers[speakerId]) {
+                        experimentData[experimentName].speakers[speakerId] = [];
+                    }
 
-            // スライダーを作成
-            const sliderContainer = document.createElement('div');
-            sliderContainer.classList.add('slider-container');
-
-            const sliderLabel = document.createElement('div');
-            sliderLabel.textContent = `現在のエポック: ${experiment.slider.default}`;
-            sliderLabel.classList.add('slider-value');
-
-            const slider = document.createElement('input');
-            slider.type = 'range';
-            slider.classList.add('slider');
-            slider.min = experiment.slider.min;
-            slider.max = experiment.slider.max;
-            slider.step = experiment.slider.step;
-            slider.value = experiment.slider.default;
-
-            sliderContainer.appendChild(slider);
-            sliderContainer.appendChild(sliderLabel);
-            section.appendChild(sliderContainer);
-
-            // 表を作成
-            const table = document.createElement('table');
-            table.innerHTML = `
-                <thead>
-                    <tr>
-                        <th>Speaker</th>
-                        <th>Type</th>
-                        <th>Audio</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            `;
-            const tableBody = table.querySelector('tbody');
-            section.appendChild(table);
-
-            // スライダー変更時にテーブルを更新
-            function updateTable(epoch) {
-                sliderLabel.textContent = `現在のエポック: ${epoch}`;
-                tableBody.innerHTML = ""; // テーブルをクリア
-
-                Object.keys(experiment.speakers).forEach(speakerId => {
-                    experiment.speakers[speakerId]
-                        .filter(data => data.src.includes(`epoch_${epoch}`))
-                        .forEach(data => {
-                            const row = document.createElement('tr');
-                            row.innerHTML = `
-                                <td>${speakerId}</td>
-                                <td>${data.type}</td>
-                                <td>
-                                    <audio controls>
-                                        <source src="${data.src}" type="audio/wav">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                </td>
-                            `;
-                            tableBody.appendChild(row);
-                        });
-                });
-            }
-
-            // 初期表示
-            updateTable(slider.value);
-
-            // スライダー変更時のイベント
-            slider.addEventListener('input', () => {
-                updateTable(slider.value);
+                    experimentData[experimentName].speakers[speakerId].push({
+                        type: `File with Cos: ${CosValue}`,
+                        src: file,
+                        CosValue
+                    });
+                }
             });
 
-            // セクションをDOMに追加
-            experimentsDiv.appendChild(section);
-        });
+            // 実験セクションを生成
+            Object.keys(experimentData).forEach(expKey => {
+                const experiment = experimentData[expKey];
+
+                const section = document.createElement('section');
+                const title = document.createElement('h2');
+                title.textContent = experiment.title;
+                section.appendChild(title);
+
+                const sliderContainer = document.createElement('div');
+                sliderContainer.classList.add('slider-container');
+
+                const sliderLabel = document.createElement('div');
+                sliderLabel.textContent = "Cos(Src vs Noise): 1.0";
+                sliderLabel.classList.add('slider-value');
+
+                const slider = document.createElement('input');
+                slider.type = 'range';
+                slider.classList.add('slider');
+                slider.min = -0.5;
+                slider.max = 1.0;
+                slider.step = 0.1;
+                slider.value = 1.0;
+
+                sliderContainer.appendChild(slider);
+                sliderContainer.appendChild(sliderLabel);
+                section.appendChild(sliderContainer);
+
+                const table = document.createElement('table');
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Speaker</th>
+                            <th>Type</th>
+                            <th>Audio</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                `;
+                const tableBody = table.querySelector('tbody');
+                section.appendChild(table);
+
+                // スライダー変更時にテーブルを更新
+                function updateTable(Cos) {
+                    sliderLabel.textContent = `Cos(Src vs Noise): ${Cos}`;
+                    tableBody.innerHTML = "";
+
+                    Object.keys(experiment.speakers).forEach(speakerId => {
+                        experiment.speakers[speakerId]
+                            .filter(data => data.CosValue === Cos.toString())
+                            .forEach(data => {
+                                const row = document.createElement('tr');
+                                row.innerHTML = `
+                                    <td>${speakerId}</td>
+                                    <td>${data.type}</td>
+                                    <td>
+                                        <audio controls>
+                                            <source src="${data.src}" type="audio/wav">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                `;
+                                tableBody.appendChild(row);
+                            });
+                    });
+                }
+
+                updateTable(slider.value);
+                slider.addEventListener('input', () => {
+                    updateTable(slider.value);
+                });
+
+                experimentsDiv.appendChild(section);
+            });
+        }
+
+        generateExperiments();
     </script>
 </body>
 </html>
