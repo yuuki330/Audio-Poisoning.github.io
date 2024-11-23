@@ -5,60 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>アンカー話者を用いたデータポイズニング</title>
     <style>
-        /* ページ全体をフレックスレイアウトで構築 */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0 20px; /* 左右に20pxの余白を追加 */
+            padding: 0 20px;
             background-color: #f9f9f9;
             color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* ページ全体の高さを確保 */
+            min-height: 100vh;
         }
-    
+
         header, .authors, .abstract {
             margin-bottom: 20px;
         }
-    
+
         .authors, .abstract {
             font-size: 18px;
         }
-    
-        main {
-            flex: 1; /* メインコンテンツを余白として拡張 */
+
+        section {
+            margin-bottom: 40px;
         }
-    
+
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #f4f4f4; /* 背景色を設定 */
+            background-color: #f4f4f4;
         }
-    
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-    
+
         th, td {
             padding: 8px 12px;
             text-align: left;
             border: 1px solid #ddd;
         }
-    
+
         th {
             background-color: #f4f4f4;
         }
-    
+
         .slider-container {
             margin: 20px 0;
         }
-    
+
         .slider {
             width: 100%;
         }
-    
+
         .slider-value {
             text-align: center;
             font-size: 16px;
@@ -73,82 +70,111 @@
     <section class="authors">
         <b>Authors:</b> Yuuki Katsumata
     </section>
-
     <section class="abstract">
         <b>Abstract:</b> abstract記載
     </section>
     <section class="slider-container">
         <h3>調整用スライダー</h3>
-        <input id="epochSlider" class="slider" type="range" min="100" max="1000" step="100" value="500">
+        <input id="CosSlider" class="slider" type="range" min="100" max="1000" step="100" value="500">
         <div id="sliderValue" class="slider-value">現在のエポック: 500</div>
     </section>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Speaker</th>
-                <th>Type</th>
-                <th>Audio</th>
-            </tr>
-        </thead>
-        <tbody id="audioTable">
-            <!-- 動的にデータを挿入 -->
-        </tbody>
-    </table>
-    
-<footer>
-    <p>© 2024 Yuuki Katsumata. Powered by GitHub Pages.</p>
-</footer>
+    <div id="experiments">
+        <!-- 動的にセクションを挿入 -->
+    </div>
+
+    <footer>
+        <p>© 2024 Yuuki Katsumata. Powered by GitHub Pages.</p>
+    </footer>
 
     <script>
-        const slider = document.getElementById('epochSlider');
+        const slider = document.getElementById('CosSlider');
         const sliderValue = document.getElementById('sliderValue');
-        const audioTable = document.getElementById('audioTable');
+        const experimentsDiv = document.getElementById('experiments');
 
-        // 音声データの定義 (スライダーの値に応じて表示を変更)
-        const audioData = {
-            100: [
-                { speaker: "4", type: "Reference Speech", src: "src/epoch_100/speaker_4_ref.wav" },
-                { speaker: "4", type: "Noise Added (α=0.001)", src: "src/epoch_100/speaker_4_noise_0.001.wav" }
-            ],
-            500: [
-                { speaker: "4", type: "Reference Speech", src: "src/epoch_500/speaker_4_ref.wav" },
-                { speaker: "4", type: "Noise Added (α=0.001)", src: "src/epoch_500/speaker_4_noise_0.001.wav" }
-            ],
-            1000: [
-                { speaker: "4", type: "Reference Speech", src: "src/epoch_1000/speaker_4_ref.wav" },
-                { speaker: "4", type: "Noise Added (α=0.001)", src: "src/epoch_1000/speaker_4_noise_0.001.wav" }
-            ]
+        // 実験ごとの音声データ
+        const experimentData = {
+            experiment1: {
+                title: "実験 1: 基準音声",
+                speakers: {
+                    "4": [
+                        { type: "Reference Speech", src: "src/experiment1/epoch_100/speaker_4_ref.wav" },
+                        { type: "Noise Added (α=0.001)", src: "src/experiment1/epoch_100/speaker_4_noise_0.001.wav" }
+                    ],
+                    "17": [
+                        { type: "Reference Speech", src: "src/experiment1/epoch_100/speaker_17_ref.wav" },
+                        { type: "Noise Added (α=0.001)", src: "src/experiment1/epoch_100/speaker_17_noise_0.001.wav" }
+                    ]
+                }
+            },
+            experiment2: {
+                title: "実験 2: 提案手法",
+                speakers: {
+                    "4": [
+                        { type: "Reference Speech", src: "src/experiment2/epoch_500/speaker_4_ref.wav" },
+                        { type: "Noise Added (α=0.01)", src: "src/experiment2/epoch_500/speaker_4_noise_0.01.wav" }
+                    ],
+                    "17": [
+                        { type: "Reference Speech", src: "src/experiment2/epoch_500/speaker_17_ref.wav" },
+                        { type: "Noise Added (α=0.01)", src: "src/experiment2/epoch_500/speaker_17_noise_0.01.wav" }
+                    ]
+                }
+            }
         };
 
-        // スライダー変更時に呼び出される関数
-        function updateAudioTable(epoch) {
+        function updateExperiments(epoch) {
             sliderValue.textContent = `現在のエポック: ${epoch}`;
-            audioTable.innerHTML = ""; // テーブルをクリア
+            experimentsDiv.innerHTML = "";
 
-            // 現在のエポックの音声データを追加
-            audioData[epoch].forEach(data => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${data.speaker}</td>
-                    <td>${data.type}</td>
-                    <td>
-                        <audio controls>
-                            <source src="${data.src}" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
-                `;
-                audioTable.appendChild(row);
+            Object.keys(experimentData).forEach(expKey => {
+                const experiment = experimentData[expKey];
+                const section = document.createElement('section');
+                const title = document.createElement('h2');
+                title.textContent = experiment.title;
+                section.appendChild(title);
+
+                Object.keys(experiment.speakers).forEach(speakerId => {
+                    const speakerTitle = document.createElement('h3');
+                    speakerTitle.textContent = `話者: ${speakerId}`;
+                    section.appendChild(speakerTitle);
+
+                    const table = document.createElement('table');
+                    table.innerHTML = `
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Audio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${experiment.speakers[speakerId]
+                                .filter(data => data.src.includes(`epoch_${epoch}`))
+                                .map(data => `
+                                    <tr>
+                                        <td>${data.type}</td>
+                                        <td>
+                                            <audio controls>
+                                                <source src="${data.src}" type="audio/wav">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                        </tbody>
+                    `;
+                    section.appendChild(table);
+                });
+
+                experimentsDiv.appendChild(section);
             });
         }
 
         // 初期表示
-        updateAudioTable(slider.value);
+        updateExperiments(slider.value);
 
         // スライダー値が変更されたらテーブルを更新
         slider.addEventListener('input', () => {
-            updateAudioTable(slider.value);
+            updateExperiments(slider.value);
         });
     </script>
 </body>
