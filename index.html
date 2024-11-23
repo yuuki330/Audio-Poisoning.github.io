@@ -115,32 +115,39 @@
                 exp4: {
                     title: "Exp.4: 提案手法評価",
                     speakers: {}
+                },
+                exp5: {
+                    title: "Exp.5: ASV評価",
+                    speakers: {}
                 }
             };
 
             files.forEach(file => {
-                const parts = file.split('/');
                 const experimentName = parts[1]; // ディレクトリ名で実験を判定
-                const speakerId = parts[2]; // "17" などを取得
-                const parts2 = parts[parts.length-1].split('_');
-                const CosValue = parseFloat(parts2[parts2.length-1].split('.wav')[0]);
-                let typename = ''
 
-                if (parts[3] == 'gen') {
-                    typename = 'gen'
-                } 
-                console.log(typename)
+                if (experimentName != exp5) {
+                    const parts = file.split('/');
+                    const speakerId = parts[2]; // "17" などを取得
+                    const parts2 = parts[parts.length-1].split('_');
+                    const CosValue = parseFloat(parts2[parts2.length-1].split('.wav')[0]);
+                    let typename = ''
 
-                if (experimentData[experimentName]) {
-                    if (!experimentData[experimentName].speakers[speakerId]) {
-                        experimentData[experimentName].speakers[speakerId] = [];
+                    if (parts[3] == 'gen') {
+                        typename = 'gen'
+                    } 
+                    console.log(typename)
+
+                    if (experimentData[experimentName]) {
+                        if (!experimentData[experimentName].speakers[speakerId]) {
+                            experimentData[experimentName].speakers[speakerId] = [];
+                        }
+
+                        experimentData[experimentName].speakers[speakerId].push({
+                            type: typename,
+                            src: file,
+                            CosValue
+                        });
                     }
-
-                    experimentData[experimentName].speakers[speakerId].push({
-                        type: typename,
-                        src: file,
-                        CosValue
-                    });
                 }
             });
 
