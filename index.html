@@ -118,6 +118,11 @@
                 const speakerId = parts[2].split('_')[1]; // "17" などを取得
                 const CosValue = file.split('_')[3]?.split('.')[0]; // 3つ目の "_" 以降を取得
 
+                console.log(parts)
+                console.log(experimentName)
+                console.log(speakerId)
+                console.log(CosValue)
+
                 if (experimentData[experimentName]) {
                     if (!experimentData[experimentName].speakers[speakerId]) {
                         experimentData[experimentName].speakers[speakerId] = [];
