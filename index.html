@@ -61,6 +61,16 @@
         .control-container input {
             margin: 10px;
         }
+
+        .slider {
+            width: 25%;
+        }
+
+        .slider-value {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -85,17 +95,13 @@
     <script>
         const experimentsDiv = document.getElementById('experiments');
 
-        // JSON ファイルからファイルリストを取得
         async function fetchFileList() {
             const response = await fetch('filelist.json');
             const files = await response.json();
-
-            // ファイルパスの順序をソート
             files.sort((a, b) => a.localeCompare(b));
             return files;
         }
 
-        // 実験データを生成
         async function generateExperiments() {
             const files = await fetchFileList();
 
@@ -116,11 +122,12 @@
 
             files.forEach(file => {
                 const parts = file.split('/');
-                const experimentName = parts[1]; // ディレクトリ名で実験を判定
-                const speakerId = parts[2]; // "17" などを取得
+                const experimentName = parts[1];
+                const speakerId = parts[2];
+                const CosValue = parseFloat(parts[parts.length - 1].split('_').pop().split('.wav')[0]);
 
                 if (experimentName === 'exp5') {
-                    const sampleName = parts[4].split('_')[1]; // サンプル名取得
+                    const sampleName = parts[4].split('_')[1];
                     if (!experimentData[experimentName].samples[sampleName]) {
                         experimentData[experimentName].samples[sampleName] = [];
                     }
@@ -129,18 +136,18 @@
                         src: file
                     });
                 } else {
-                    let typeName = parts[3] === 'gen' ? 'gen' : 'adv';
+                    const typeName = parts[3] === 'gen' ? 'gen' : 'adv';
                     if (!experimentData[experimentName].speakers[speakerId]) {
                         experimentData[experimentName].speakers[speakerId] = [];
                     }
                     experimentData[experimentName].speakers[speakerId].push({
                         type: typeName,
-                        src: file
+                        src: file,
+                        CosValue
                     });
                 }
             });
 
-            // 実験セクションを生成
             Object.keys(experimentData).forEach(expKey => {
                 const experiment = experimentData[expKey];
 
@@ -149,8 +156,7 @@
                 title.textContent = experiment.title;
                 section.appendChild(title);
 
-                if (expKey === "exp5") {
-                    // サンプル選択リストを作成
+                if (expKey === 'exp5') {
                     const controlContainer = document.createElement('div');
                     controlContainer.classList.add('control-container');
 
@@ -182,7 +188,6 @@
                     const tableBody = table.querySelector('tbody');
                     section.appendChild(table);
 
-                    // テーブル更新
                     function updateTable(sampleName) {
                         tableBody.innerHTML = "";
                         if (experiment.samples[sampleName]) {
@@ -202,10 +207,71 @@
                         }
                     }
 
-                    // 初期表示と変更イベント
                     updateTable(sampleSelect.value);
                     sampleSelect.addEventListener('change', () => {
                         updateTable(sampleSelect.value);
+                    });
+                } else {
+                    const sliderContainer = document.createElement('div');
+                    sliderContainer.classList.add('control-container');
+
+                    const sliderLabel = document.createElement('div');
+                    sliderLabel.textContent = "Cos(Src vs Noise): 1.0";
+                    sliderLabel.classList.add('slider-value');
+
+                    const slider = document.createElement('input');
+                    slider.type = 'range';
+                    slider.classList.add('slider');
+                    slider.min = -0.45;
+                    slider.max = 1.0;
+                    slider.step = 0.05;
+                    slider.value = 1.0;
+
+                    sliderContainer.appendChild(slider);
+                    sliderContainer.appendChild(sliderLabel);
+                    section.appendChild(sliderContainer);
+
+                    const table = document.createElement('table');
+                    table.innerHTML = `
+                        <thead>
+                            <tr>
+                                <th>Speaker</th>
+                                <th>Type</th>
+                                <th>Audio</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    `;
+                    const tableBody = table.querySelector('tbody');
+                    section.appendChild(table);
+
+                    function updateTable(Cos) {
+                        sliderLabel.textContent = `Cos(Src vs Noise): ${Cos}`;
+                        tableBody.innerHTML = "";
+
+                        Object.keys(experiment.speakers).forEach(speakerId => {
+                            experiment.speakers[speakerId]
+                                .filter(data => data.CosValue === parseFloat(Cos))
+                                .forEach(data => {
+                                    const row = document.createElement('tr');
+                                    row.innerHTML = `
+                                        <td>${speakerId}</td>
+                                        <td>${data.type}</td>
+                                        <td>
+                                            <audio controls>
+                                                <source src="${data.src}" type="audio/wav">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                    `;
+                                    tableBody.appendChild(row);
+                                });
+                        });
+                    }
+
+                    updateTable(slider.value);
+                    slider.addEventListener('input', () => {
+                        updateTable(slider.value);
                     });
                 }
 
