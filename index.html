@@ -118,8 +118,11 @@
                 const speakerId = parts[2]; // "17" などを取得
                 const parts2 = parts[parts.length-1].split('_');
                 const CosValue = parseFloat(parts2[parts2.length-1].split('.wav')[0]);
+                const typename = ''
 
-                console.log("parts: ", parts)
+                if (parts[3] == 'gen') {
+                    typename = 'gen'
+                } 
 
                 if (experimentData[experimentName]) {
                     if (!experimentData[experimentName].speakers[speakerId]) {
@@ -127,7 +130,7 @@
                     }
 
                     experimentData[experimentName].speakers[speakerId].push({
-                        type: `File with Cos: ${CosValue}`,
+                        type: `${typename}`,
                         src: file,
                         CosValue
                     });
