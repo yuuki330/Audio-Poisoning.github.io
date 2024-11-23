@@ -123,7 +123,7 @@
             files.forEach(file => {
                 const parts = file.split('/');
                 const experimentName = parts[1];
-                const speakerId = parts[3];
+                const speakerId = parts[2];
                 const CosValue = parseFloat(parts[parts.length - 1].split('_').pop().split('.wav')[0]);
 
                 if (experimentName === 'exp5') {
