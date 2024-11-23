@@ -118,41 +118,38 @@
                 },
                 exp5: {
                     title: "Exp.5: ASV評価",
-                    speakers: {}
+                    method: {}
                 }
             };
 
             files.forEach(file => {
+                const parts = file.split('/');
                 const experimentName = parts[1]; // ディレクトリ名で実験を判定
+                const speakerId = parts[2]; // "17" などを取得
+                const parts2 = parts[parts.length - 1].split('_');
+                const CosValue = parseFloat(parts2[parts2.length - 1].split('.wav')[0]);
 
-                if (experimentName != exp5) {
-                    const parts = file.split('/');
-                    const speakerId = parts[2]; // "17" などを取得
-                    const parts2 = parts[parts.length-1].split('_');
-                    const CosValue = parseFloat(parts2[parts2.length-1].split('.wav')[0]);
-                    let typename = ''
-
-                    if (parts[3] == 'gen') {
-                        typename = 'gen'
-                    } 
-                    console.log(typename)
-
-                    if (experimentData[experimentName]) {
-                        if (!experimentData[experimentName].speakers[speakerId]) {
-                            experimentData[experimentName].speakers[speakerId] = [];
-                        }
-
-                        experimentData[experimentName].speakers[speakerId].push({
-                            type: typename,
-                            src: file,
-                            CosValue
-                        });
+                if (experimentName === 'exp5') {
+                    const sampleName = parts[3].split(speakerId+'_')[1].split('.wav')[0]; // サンプル名を取得 (例: "sample1")
+                    if (!experimentData[experimentName].method[speakerId]) {
+                        experimentData[experimentName].method[speakerId] = [];
                     }
+                    experimentData[experimentName].method[speakerId].push({
+                        sample: sampleName,
+                        src: file
+                    });
+                } else {
+                    let typeName = parts[3] === 'gen' ? 'gen' : 'adv';
+                    if (!experimentData[experimentName].speakers[speakerId]) {
+                        experimentData[experimentName].speakers[speakerId] = [];
+                    }
+                    experimentData[experimentName].speakers[speakerId].push({
+                        type: typeName,
+                        src: file,
+                        CosValue
+                    });
                 }
             });
-
-            // ループが終了した後に確認
-            console.log("Final experimentData:", experimentData["exp3"]);
 
             // 実験セクションを生成
             Object.keys(experimentData).forEach(expKey => {
