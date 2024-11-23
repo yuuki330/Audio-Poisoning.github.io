@@ -116,13 +116,11 @@
                 const parts = file.split('/');
                 const experimentName = parts[1]; // ディレクトリ名で実験を判定
                 const speakerId = parts[2]; // "17" などを取得
-                console.log(parts)
-                console.log(parts.length)
                 console.log(parts[parts.length-1])
-                console.log(parts[parts.length-1].split('_'))
-                const parts2 = parts[parts.length-1].split('_')
-                
-                const CosValue = parts2[parts2.length-1]?.split('.')[0]; // 6つ目の "_" 以降を取得
+                const parts2 = parts[parts.length-1].split('_');
+                console.log(parts[parts.length-1])
+                console.log(parts2[parts2.length-1].split('.')[0])
+                const CosValue = parts2[parts2.length-1].split('.')[0];
 
                 // console.log(parts)
                 // console.log(experimentName)
