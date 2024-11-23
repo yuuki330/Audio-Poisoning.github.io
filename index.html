@@ -116,10 +116,7 @@
                 const parts = file.split('/');
                 const experimentName = parts[1]; // ディレクトリ名で実験を判定
                 const speakerId = parts[2]; // "17" などを取得
-                console.log(parts[parts.length-1])
                 const parts2 = parts[parts.length-1].split('_');
-                console.log(parts[parts.length-1])
-                console.log(parts2[parts2.length-1].split('.wav')[0])
                 const CosValue = parts2[parts2.length-1].split('.wav')[0];
 
                 // console.log(parts)
@@ -188,6 +185,7 @@
                     tableBody.innerHTML = "";
 
                     Object.keys(experiment.speakers).forEach(speakerId => {
+                        console.log(data)
                         experiment.speakers[speakerId]
                             .filter(data => data.CosValue === Cos.toString())
                             .forEach(data => {
