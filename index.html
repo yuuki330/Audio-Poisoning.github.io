@@ -122,8 +122,12 @@
                 console.log("experimentName:", experimentName);
                 console.log("speakerId:", speakerId);
 
+
+
                 if (experimentData[experimentName]) {
+                    console.log("aaa")
                     if (!experimentData[experimentName].speakers[speakerId]) {
+                        console.log("bbb")
                         experimentData[experimentName].speakers[speakerId] = [];
                     }
 
