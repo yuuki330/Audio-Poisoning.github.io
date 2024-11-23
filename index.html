@@ -116,6 +116,8 @@
                 const parts = file.split('/');
                 const experimentName = parts[1]; // ディレクトリ名で実験を判定
                 const speakerId = parts[2]; // "17" などを取得
+                console.log(parts[4].split('_'))
+                
                 const CosValue = parts[4].split('_')[6]?.split('.')[0]; // 6つ目の "_" 以降を取得
 
                 console.log(parts)
