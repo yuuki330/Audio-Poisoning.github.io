@@ -118,7 +118,7 @@
                 const speakerId = parts[2]; // "17" などを取得
                 const parts2 = parts[parts.length-1].split('_');
                 const CosValue = parseFloat(parts2[parts2.length-1].split('.wav')[0]);
-                const typename = ''
+                let typename = ''
 
                 if (parts[3] == 'gen') {
                     typename = 'gen'
