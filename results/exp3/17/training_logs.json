@@ -1,0 +1,257 @@
+{
+    "parameters": {
+        "src_path": "/workspace/LibriTTS/train-clean2/17/362/17_362_000000_000000.wav",
+        "output_dir": "/workspace/experiment/results/exp3/17/",
+        "training_method": "I-FGSM",
+        "thresholds": [
+            1.0,
+            0.95,
+            0.9,
+            0.8500000000000001,
+            0.8,
+            0.75,
+            0.7,
+            0.65,
+            0.6,
+            0.55,
+            0.5,
+            0.45,
+            0.4,
+            0.35,
+            0.3,
+            0.25,
+            0.19999999999999996,
+            0.14999999999999997,
+            0.09999999999999998,
+            0.04999999999999999,
+            0.0,
+            -0.050000000000000044,
+            -0.10000000000000009,
+            -0.15000000000000002,
+            -0.20000000000000007,
+            -0.25,
+            -0.30000000000000004,
+            -0.3500000000000001,
+            -0.4,
+            -0.45000000000000007
+        ],
+        "utmos_org": 3.972903251647949
+    },
+    "scores": [
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_1.0.wav",
+            "utmos_score": 3.972903251647949,
+            "cos_src_noise": 1.0,
+            "epochs": 0,
+            "threshold": 1.0
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.95.wav",
+            "utmos_score": 3.973264455795288,
+            "cos_src_noise": 0.9497918486595154,
+            "epochs": 130,
+            "threshold": 0.95
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.9.wav",
+            "utmos_score": 3.9734392166137695,
+            "cos_src_noise": 0.8995761275291443,
+            "epochs": 209,
+            "threshold": 0.9
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.8500000000000001.wav",
+            "utmos_score": 3.973215103149414,
+            "cos_src_noise": 0.849507212638855,
+            "epochs": 284,
+            "threshold": 0.8500000000000001
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.8.wav",
+            "utmos_score": 3.972703695297241,
+            "cos_src_noise": 0.7998759746551514,
+            "epochs": 357,
+            "threshold": 0.8
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.75.wav",
+            "utmos_score": 3.9714860916137695,
+            "cos_src_noise": 0.7499594688415527,
+            "epochs": 427,
+            "threshold": 0.75
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.7.wav",
+            "utmos_score": 3.9707045555114746,
+            "cos_src_noise": 0.6992709040641785,
+            "epochs": 495,
+            "threshold": 0.7
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.65.wav",
+            "utmos_score": 3.9705584049224854,
+            "cos_src_noise": 0.6498188972473145,
+            "epochs": 558,
+            "threshold": 0.65
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.6.wav",
+            "utmos_score": 3.9704878330230713,
+            "cos_src_noise": 0.5993680953979492,
+            "epochs": 617,
+            "threshold": 0.6
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.55.wav",
+            "utmos_score": 3.9704749584198,
+            "cos_src_noise": 0.549297571182251,
+            "epochs": 676,
+            "threshold": 0.55
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.5.wav",
+            "utmos_score": 3.9699716567993164,
+            "cos_src_noise": 0.4995918273925781,
+            "epochs": 740,
+            "threshold": 0.5
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.45.wav",
+            "utmos_score": 3.969494342803955,
+            "cos_src_noise": 0.4496486783027649,
+            "epochs": 811,
+            "threshold": 0.45
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.4.wav",
+            "utmos_score": 3.968104362487793,
+            "cos_src_noise": 0.3997352719306946,
+            "epochs": 887,
+            "threshold": 0.4
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.35.wav",
+            "utmos_score": 3.966003894805908,
+            "cos_src_noise": 0.3498823344707489,
+            "epochs": 972,
+            "threshold": 0.35
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.3.wav",
+            "utmos_score": 3.9631056785583496,
+            "cos_src_noise": 0.2999468147754669,
+            "epochs": 1066,
+            "threshold": 0.3
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.25.wav",
+            "utmos_score": 3.958867073059082,
+            "cos_src_noise": 0.24965760111808777,
+            "epochs": 1189,
+            "threshold": 0.25
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.19999999999999996.wav",
+            "utmos_score": 3.9552063941955566,
+            "cos_src_noise": 0.19992545247077942,
+            "epochs": 1316,
+            "threshold": 0.19999999999999996
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.14999999999999997.wav",
+            "utmos_score": 3.949249505996704,
+            "cos_src_noise": 0.14982622861862183,
+            "epochs": 1464,
+            "threshold": 0.14999999999999997
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.09999999999999998.wav",
+            "utmos_score": 3.941222906112671,
+            "cos_src_noise": 0.09985514730215073,
+            "epochs": 1650,
+            "threshold": 0.09999999999999998
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.04999999999999999.wav",
+            "utmos_score": 3.9390363693237305,
+            "cos_src_noise": 0.049825269728899,
+            "epochs": 1875,
+            "threshold": 0.04999999999999999
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_0.0.wav",
+            "utmos_score": 3.9318039417266846,
+            "cos_src_noise": -0.000151854008436203,
+            "epochs": 2117,
+            "threshold": 0.0
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_-0.050000000000000044.wav",
+            "utmos_score": 3.920450448989868,
+            "cos_src_noise": -0.050174787640571594,
+            "epochs": 2367,
+            "threshold": -0.050000000000000044
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_-0.10000000000000009.wav",
+            "utmos_score": 3.912371873855591,
+            "cos_src_noise": -0.1000787764787674,
+            "epochs": 2609,
+            "threshold": -0.10000000000000009
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_-0.15000000000000002.wav",
+            "utmos_score": 3.9024252891540527,
+            "cos_src_noise": -0.15012440085411072,
+            "epochs": 2870,
+            "threshold": -0.15000000000000002
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_-0.20000000000000007.wav",
+            "utmos_score": 3.881042718887329,
+            "cos_src_noise": -0.20000892877578735,
+            "epochs": 3186,
+            "threshold": -0.20000000000000007
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_-0.25.wav",
+            "utmos_score": 3.866365909576416,
+            "cos_src_noise": -0.2500300407409668,
+            "epochs": 3660,
+            "threshold": -0.25
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_-0.30000000000000004.wav",
+            "utmos_score": 3.815030813217163,
+            "cos_src_noise": -0.30004873871803284,
+            "epochs": 4574,
+            "threshold": -0.30000000000000004
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_-0.3500000000000001.wav",
+            "utmos_score": 3.714477777481079,
+            "cos_src_noise": -0.350030779838562,
+            "epochs": 5964,
+            "threshold": -0.3500000000000001
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_-0.4.wav",
+            "utmos_score": 3.5812907218933105,
+            "cos_src_noise": -0.4000025689601898,
+            "epochs": 7935,
+            "threshold": -0.4
+        },
+        {
+            "output_path": "/workspace/experiment/results/exp3/17/result_17_362_000000_000000_-0.45000000000000007.wav",
+            "utmos_score": 3.4362502098083496,
+            "cos_src_noise": -0.43326523900032043,
+            "epochs": 10000,
+            "threshold": -0.45000000000000007
+        }
+    ],
+    "plots": {
+        "threshold_vs_cos": "/workspace/experiment/results/exp3/17/threshold_vs_cos.png",
+        "threshold_vs_utmos": "/workspace/experiment/results/exp3/17/threshold_vs_utmos.png",
+        "threshold_vs_num_epochs": "/workspace/experiment/results/exp3/17/threshold_vs_num_epochs.png"
+    }
+}
