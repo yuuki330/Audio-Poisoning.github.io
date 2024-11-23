@@ -130,9 +130,10 @@
                         CosValue
                     });
                 }
-                console.log("Filtering data with Cos:", CosValue);
-                console.log("experimet Data:", experimentData);
             });
+
+            // ループが終了した後に確認
+            console.log("Final experimentData:", experimentData);
 
             // 実験セクションを生成
             Object.keys(experimentData).forEach(expKey => {
@@ -183,7 +184,7 @@
 
                     Object.keys(experiment.speakers).forEach(speakerId => {
                         experiment.speakers[speakerId]
-                            .filter(data => data.CosValue === Cos.toString())
+                            .filter(data => data.CosValue === parseFloat(Cos))
                             .forEach(data => {
                                 const row = document.createElement('tr');
                                 row.innerHTML = `
