@@ -50,21 +50,16 @@
             background-color: #f4f4f4;
         }
 
-        .slider-container {
+        .control-container {
             margin: 20px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .slider {
-            width: 25%;
-        }
-
-        .slider-value {
-            text-align: center;
-            font-size: 16px;
-            margin-top: 10px;
+        .control-container select,
+        .control-container input {
+            margin: 10px;
         }
     </style>
 </head>
@@ -97,8 +92,6 @@
 
             // ファイルパスの順序をソート
             files.sort((a, b) => a.localeCompare(b));
-
-            // return await response.json();
             return files;
         }
 
@@ -106,7 +99,6 @@
         async function generateExperiments() {
             const files = await fetchFileList();
 
-            // ファイルリストを元に実験データを構築
             const experimentData = {
                 exp3: {
                     title: "Exp.3: I-FGSM評価",
@@ -118,7 +110,7 @@
                 },
                 exp5: {
                     title: "Exp.5: ASV評価",
-                    method: {}
+                    samples: {}
                 }
             };
 
@@ -126,17 +118,14 @@
                 const parts = file.split('/');
                 const experimentName = parts[1]; // ディレクトリ名で実験を判定
                 const speakerId = parts[2]; // "17" などを取得
-                const parts2 = parts[parts.length - 1].split('_');
-                const CosValue = parseFloat(parts2[parts2.length - 1].split('.wav')[0]);
 
                 if (experimentName === 'exp5') {
-                    const speakerId = parts[3];
-                    const sampleName = parts[4].split(speakerId+'_')[1].split('.wav')[0]; // サンプル名を取得 (例: "sample1")
-                    if (!experimentData[experimentName].method[speakerId]) {
-                        experimentData[experimentName].method[speakerId] = [];
+                    const sampleName = parts[4].split('_')[1]; // サンプル名取得
+                    if (!experimentData[experimentName].samples[sampleName]) {
+                        experimentData[experimentName].samples[sampleName] = [];
                     }
-                    experimentData[experimentName].method[speakerId].push({
-                        sample: sampleName,
+                    experimentData[experimentName].samples[sampleName].push({
+                        method: parts[3],
                         src: file
                     });
                 } else {
@@ -146,8 +135,7 @@
                     }
                     experimentData[experimentName].speakers[speakerId].push({
                         type: typeName,
-                        src: file,
-                        CosValue
+                        src: file
                     });
                 }
             });
@@ -161,52 +149,47 @@
                 title.textContent = experiment.title;
                 section.appendChild(title);
 
-                const sliderContainer = document.createElement('div');
-                sliderContainer.classList.add('slider-container');
+                if (expKey === "exp5") {
+                    // サンプル選択リストを作成
+                    const controlContainer = document.createElement('div');
+                    controlContainer.classList.add('control-container');
 
-                const sliderLabel = document.createElement('div');
-                sliderLabel.textContent = "Cos(Src vs Noise): 1.0";
-                sliderLabel.classList.add('slider-value');
+                    const selectLabel = document.createElement('label');
+                    selectLabel.textContent = "サンプルを選択: ";
 
-                const slider = document.createElement('input');
-                slider.type = 'range';
-                slider.classList.add('slider');
-                slider.min = -0.45;
-                slider.max = 1.0;
-                slider.step = 0.05;
-                slider.value = 1.0;
+                    const sampleSelect = document.createElement('select');
+                    Object.keys(experiment.samples).forEach(sampleName => {
+                        const option = document.createElement('option');
+                        option.value = sampleName;
+                        option.textContent = sampleName;
+                        sampleSelect.appendChild(option);
+                    });
 
-                sliderContainer.appendChild(slider);
-                sliderContainer.appendChild(sliderLabel);
-                section.appendChild(sliderContainer);
+                    controlContainer.appendChild(selectLabel);
+                    controlContainer.appendChild(sampleSelect);
+                    section.appendChild(controlContainer);
 
-                const table = document.createElement('table');
-                table.innerHTML = `
-                    <thead>
-                        <tr>
-                            <th>Speaker</th>
-                            <th>Type</th>
-                            <th>Audio</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                `;
-                const tableBody = table.querySelector('tbody');
-                section.appendChild(table);
+                    const table = document.createElement('table');
+                    table.innerHTML = `
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Audio</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    `;
+                    const tableBody = table.querySelector('tbody');
+                    section.appendChild(table);
 
-                // スライダー変更時にテーブルを更新
-                function updateTable(Cos) {
-                    sliderLabel.textContent = `Cos(Src vs Noise): ${Cos}`;
-                    tableBody.innerHTML = "";
-
-                    Object.keys(experiment.speakers).forEach(speakerId => {
-                        experiment.speakers[speakerId]
-                            .filter(data => data.CosValue === parseFloat(Cos))
-                            .forEach(data => {
+                    // テーブル更新
+                    function updateTable(sampleName) {
+                        tableBody.innerHTML = "";
+                        if (experiment.samples[sampleName]) {
+                            experiment.samples[sampleName].forEach(data => {
                                 const row = document.createElement('tr');
                                 row.innerHTML = `
-                                    <td>${speakerId}</td>
-                                    <td>${data.type}</td>
+                                    <td>${data.method}</td>
                                     <td>
                                         <audio controls>
                                             <source src="${data.src}" type="audio/wav">
@@ -216,13 +199,15 @@
                                 `;
                                 tableBody.appendChild(row);
                             });
+                        }
+                    }
+
+                    // 初期表示と変更イベント
+                    updateTable(sampleSelect.value);
+                    sampleSelect.addEventListener('change', () => {
+                        updateTable(sampleSelect.value);
                     });
                 }
-
-                updateTable(slider.value);
-                slider.addEventListener('input', () => {
-                    updateTable(slider.value);
-                });
 
                 experimentsDiv.appendChild(section);
             });
